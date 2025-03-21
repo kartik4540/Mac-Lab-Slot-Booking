@@ -142,4 +142,24 @@
   color: #856404;
   font-size: 0.95rem;
   font-weight: 500;
+}
+
+.admin-handler {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px dashed #ddd;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.admin-handler strong {
+  color: #2c3e50;
+}
+
+.handled-time {
+  display: block;
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 4px;
+  font-style: italic;
 } 
