@@ -126,4 +126,20 @@
   font-size: 18px;
   background-color: #f8f9fa;
   border-radius: 8px;
+}
+
+.action-note {
+  margin: 10px 0 20px;
+  padding: 10px 15px;
+  background-color: #fff3cd;
+  border-left: 4px solid #ffc107;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.action-note p {
+  margin: 0;
+  color: #856404;
+  font-size: 0.95rem;
+  font-weight: 500;
 } 
