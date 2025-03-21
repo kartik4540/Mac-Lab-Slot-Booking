@@ -176,6 +176,15 @@ const PendingBookings = () => {
                   <p><strong>Day Order:</strong> {booking.day_order}</p>
                   <p><strong>Lab:</strong> {booking.lab}</p>
                   <p><strong>Time Slot:</strong> {booking.time_slot}</p>
+                  {booking.handled_by && booking.status !== 'waiting' && (
+                    <p className="admin-handler">
+                      <strong>Handled by:</strong> {booking.handled_by}
+                      <br />
+                      <span className="handled-time">
+                        {booking.handled_at ? new Date(booking.handled_at).toLocaleString() : ''}
+                      </span>
+                    </p>
+                  )}
                 </div>
               </div>
               {selectedStatus === 'waiting' && (
