@@ -90,7 +90,7 @@ const SlotBooking = () => {
   
   // Function to check if a user is admin
   const isAdminUser = (email) => {
-    const adminEmails = ['km5260@srmist.edu.in'];
+    const adminEmails = ['km5260@srmist.edu.in', 'manorant@srmist.edu.in', 'rk0598@srmist.edu.in'];
     return adminEmails.includes(email);
   };
 
