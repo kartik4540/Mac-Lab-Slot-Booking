@@ -109,11 +109,11 @@ const PendingBookings = () => {
       // Get current user
       const { data: { user } } = await supabase.auth.getUser();
       
-      // Process the booking action
+      // Process the booking action with admin info
       const result = await handleBookingAction(bookingId, action, user.email);
       
       // Show success message
-      setSuccess(`Booking ${action === 'confirm' ? 'confirmed' : 'rejected'} successfully`);
+      setSuccess(`Booking ${action === 'confirm' ? 'confirmed' : 'rejected'} successfully by ${user.email}`);
       
       // Refresh bookings with current filter
       await handleStatusChange(selectedStatus);
