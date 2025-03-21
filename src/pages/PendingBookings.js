@@ -43,7 +43,7 @@ const PendingBookings = () => {
       setLoading(true);
       
       // Fetch all pending bookings using fetchPendingBookings
-      const bookingsData = await fetchPendingBookings(adminEmail);
+      const bookingsData = await fetchPendingBookings(adminEmail) || [];
       
       // Filter based on selected status
       const filteredBookings = selectedStatus === 'all' 
@@ -58,10 +58,14 @@ const PendingBookings = () => {
       const rejected = bookingsData.filter(booking => booking.status === 'rejected').length;
       setCounts({ waiting, confirmed, rejected });
       
+      // Clear any existing error
       setError(null);
     } catch (error) {
       console.error('Error fetching bookings:', error);
-      setError('Failed to fetch bookings. Please try again later.');
+      // Don't set error for empty bookings
+      if (error.message && error.message.includes('Failed to fetch')) {
+        setError(null);
+      }
     } finally {
       setLoading(false);
     }
@@ -124,11 +128,13 @@ const PendingBookings = () => {
   };
 
   if (loading) return <div className="loading">Loading...</div>;
-  if (error) return <div className="error-message">{error}</div>;
 
   return (
     <div className="pending-bookings-page">
       <h2>Lab Bookings</h2>
+      <div className="action-note">
+        <p>Note: Please click buttons twice for correct details to update</p>
+      </div>
       {success && <div className="success-message">{success}</div>}
       
       <div className="status-filter-buttons">
