@@ -162,6 +162,14 @@ const PendingBookings = () => {
         <div className="bookings-list">
           {bookings.map(booking => (
             <div key={booking.id} className="booking-card">
+              <div className={`status-badge ${booking.status}`}>
+                {booking.status.toUpperCase()}
+                {booking.handled_by && booking.status !== 'waiting' && (
+                  <span className="handler-info">
+                    • Handled by {booking.handled_by}
+                  </span>
+                )}
+              </div>
               <div className="booking-info">
                 <div className="info-group">
                   <h3>User Details</h3>
@@ -177,12 +185,8 @@ const PendingBookings = () => {
                   <p><strong>Lab:</strong> {booking.lab}</p>
                   <p><strong>Time Slot:</strong> {booking.time_slot}</p>
                   {booking.handled_by && booking.status !== 'waiting' && (
-                    <p className="admin-handler">
-                      <strong>Handled by:</strong> {booking.handled_by}
-                      <br />
-                      <span className="handled-time">
-                        {booking.handled_at ? new Date(booking.handled_at).toLocaleString() : ''}
-                      </span>
+                    <p className="handled-time">
+                      <strong>Handled on:</strong> {booking.handled_at ? new Date(booking.handled_at).toLocaleString() : ''}
                     </p>
                   )}
                 </div>
