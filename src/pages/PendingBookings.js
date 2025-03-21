@@ -25,7 +25,7 @@ const PendingBookings = () => {
         return;
       }
 
-      const adminEmails = ['km5260@srmist.edu.in', 'manorant@srmist.edu.in'];
+      const adminEmails = ['km5260@srmist.edu.in', 'manorant@srmist.edu.in', 'rk0598@srmist.edu.in'];
       if (!adminEmails.includes(user.email)) {
         navigate('/');
         return;
